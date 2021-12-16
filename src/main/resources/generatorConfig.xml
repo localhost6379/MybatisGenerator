@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--加载mysql连接的jar包 (插件读取不到External Libraries里面的jar包所以要写地址指向)-->
+    <classPathEntry location="E:\repository\mysql\mysql-connector-java\8.0.13\mysql-connector-java-8.0.13.jar"/>
+    <!--<classPathEntry location="E:\repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>-->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--pojo实现序列化接口-->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />-->
+
+        <commentGenerator>
+            <!--这一行设置为false，即在生成代码时不去除注释. 设置为t会造成xml重复生成resultMap代码-->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 设定数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://172.16.22.8:3306/god_sparta?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=GMT%2B8"
+                        userId="root"
+                        password="123456">
+        <!--
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://172.16.22.8:3306/ehu?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root"
+                        password="123456">
+        -->
+            <!--解决字段生成不全, 生成多字段的问题-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--  生成 bean 存放的位置 model  -->
+        <javaModelGenerator targetPackage="cn.king.model.pojo" targetProject="E:\test">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成的mapper.xml 的文件的位置  -->
+        <sqlMapGenerator targetPackage="cn.king.mapper" targetProject="E:\test">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成的mapper.java接口文件的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.king.dao"
+                             targetProject="E:\test">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!--  设定反向生成的表 -->
+        <table tableName="dynamicPriceLogs" domainObjectName="dynamicPriceLogs"/>
+        <!--<table tableName="tb_advertisement_order" domainObjectName="AdvertisementOrder"/>-->
+        <!--<table tableName="tb_auction" domainObjectName="Auction"/>-->
+        <!--<table tableName="tb_auction_bid_log" domainObjectName="AuctionBidLog"/>-->
+        <!--<table tableName="tb_auction_order" domainObjectName="AuctionOrder"/>-->
+        <!--<table tableName="tb_deduction_fee_log" domainObjectName="DeductionFeeLog"/>-->
+        <!--<table tableName="tb_deposit_order" domainObjectName="DepositOrder"/>-->
+        <!--<table tableName="tb_district" domainObjectName="District"/>-->
+        <!--<table tableName="tb_item" domainObjectName="Item"/>-->
+        <!--<table tableName="tb_item_category" domainObjectName="ItemCategory"/>-->
+        <!--<table tableName="tb_item_desc" domainObjectName="ItemDesc"/>-->
+        <!--<table tableName="tb_item_order" domainObjectName="ItemOrder"/>-->
+        <!--<table tableName="tb_item_tag" domainObjectName="ItemTag"/>-->
+        <!--<table tableName="tb_live_log" domainObjectName="LiveLog"/>-->
+        <!--<table tableName="tb_message" domainObjectName="Message"/>-->
+        <!--<table tableName="tb_order_desc" domainObjectName="OrderDesc"/>-->
+        <!--<table tableName="tb_pay_log" domainObjectName="PayLog"/>-->
+        <!--<table tableName="tb_recycle_item" domainObjectName="RecycleItem"/>-->
+        <!--<table tableName="tb_recycle_order" domainObjectName="RecycleOrder"/>-->
+        <!--<table tableName="tb_send_back_log" domainObjectName="SendBackLog"/>-->
+        <!--<table tableName="tb_tag" domainObjectName="Tag"/>-->
+        <!--<table tableName="tb_template" domainObjectName="Template"/>-->
+        <!--<table tableName="tb_top_up_order" domainObjectName="TopUpOrder"/>-->
+        <!--<table tableName="tb_user_item" domainObjectName="UserItem"/>-->
+        <!--<table tableName="tb_user_seller" domainObjectName="UserSeller"/>-->
+
+    </context>
+</generatorConfiguration>

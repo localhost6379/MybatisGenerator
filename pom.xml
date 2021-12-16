@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.king</groupId>
+    <artifactId>MybatisGenerator</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <generator.version>1.3.5</generator.version>
+    </properties>
+
+    <dependencies>
+        <!-- MBG  mybatis 逆向工程包-->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>${generator.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+    <plugins>
+        <!--mybatis逆向工程插件 -->
+        <plugin>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-maven-plugin</artifactId>
+            <version>1.3.2</version>
+            <configuration>
+                <!--会不会进行覆盖 (可写可不写)-->
+                <verbose>true</verbose>
+                <overwrite>true</overwrite>
+            </configuration>
+        </plugin>
+        <!--添加 JDK8 插件-->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <!--使用 JDK8 编写.java 文件-->
+                <target>1.8</target>
+                <!--使用 JDK8 将项目中的 java 代码编译为.class 文件-->
+                <source>1.8</source>
+                <encoding>UTF-8</encoding>
+            </configuration>
+        </plugin>
+    </plugins>
+    </build>
+
+</project>
